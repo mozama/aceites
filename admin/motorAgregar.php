@@ -78,24 +78,24 @@
             <div class="card-body">
 
               <div class="table-responsive">
-                <table id="tblVer" class="table table-striped table-hover table-bordered">
+                <table id="tblResult" class="table table-striped table-hover table-bordered">
                   <thead>
                     <tr>
-                      <th>
+                      <th class="text-center">
                         Id
                       </th>
-                      <th>
+                      <th class="text-center">
                         Marca de motor
                       </th>
-                      <th>
-                        Editar
-                      </th>
-                      <th>
+                      <th class="text-center">
                         Eliminar
+                      </th>
+                      <th class="text-center">
+                        Editar
                       </th>
                     </tr>
                   </thead>
-                  <tbody id="bodyVer">
+                  <tbody id="tbodyResult">
 
                   </tbody>
 

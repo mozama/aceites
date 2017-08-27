@@ -21,13 +21,13 @@
         </a>
       </li>
 
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Motores">
-        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMotor">
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Motores" id="liMotores">
+        <a class="nav-link "  href="motorAgregar.php">
           <i class="fa fa-truck" aria-hidden="true"></i>
           <span class="nav-link-text">
             Motores</span>
         </a>
-        <ul class="sidenav-second-level collapse" id="collapseMotor">
+    <!--     <ul class="sidenav-second-level collapse" id="collapseMotor">
           <li>
             <a href="motorAgregar.php">Agregar marca</a>
           </li>
@@ -36,6 +36,7 @@
           </li>
 
         </ul>
+        -->
       </li>
 
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Modelos de motor">
@@ -100,7 +101,7 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-    
+
 
       <li class="nav-item">
         <form class="form-inline my-2 my-lg-0 mr-lg-2">
