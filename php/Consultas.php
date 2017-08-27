@@ -1,5 +1,5 @@
 <?php
-class ConsultasCliente {
+class Consultas {
   public  $ConexionBD;
   private $database;
 
@@ -8,6 +8,7 @@ class ConsultasCliente {
     include('Conexion.php');
     $ConexionBDatos = new Conexion;
     $this -> ConexionBD = $ConexionBDatos;
+    $this -> database = $this-> ConexionBD->conectarBD();
     return $ConexionBDatos;
   }
 
@@ -16,7 +17,7 @@ class ConsultasCliente {
 
                       /****************************Consulta despues de validar *************/
 
-            $this -> database = $this-> ConexionBD->conectarBD();
+          //  $this -> database = $this-> ConexionBD->conectarBD();
 
             if($this -> database->connect_errno) {
               $response = array(
@@ -53,15 +54,15 @@ class ConsultasCliente {
 */
 
     public function contarExistentes($consulta) {
-          if ($this->esCliente) {
-                        /****************************Consulta despues de validar *************/
-              $database = $this-> ConexionBD->conectarBD();
 
-              if($database->connect_errno) {
+                        /****************************Consulta despues de validar *************/
+            //  $database = $this-> ConexionBD->conectarBD();
+
+              if($this -> database ->connect_errno) {
                 $response = -1;   //No se puede conectar a la base de datos
                }
                else{
-                 if ( $result = $database->query($consulta) ) {
+                 if ( $result = $this -> database ->query($consulta) ) {
                     /*if( $result->num_rows > 0 ) {
                         $response = 1;
                     }
@@ -71,15 +72,13 @@ class ConsultasCliente {
                     $response = $result->num_rows ;
 
                 } else {
-                   $response =  $database->error;
+                   $response =  $this -> database ->error;
                 }
-                $this -> ConexionBD->desconectarDB($database);
+              //  $this -> ConexionBD->desconectarDB($database);
               }
 
                               /**************************** /Consulta despues de validar *************/
-        }else {     // $esCliente
-          $response = -2;  //'Verifique que su sesión sea administrador';
-        }
+
 
       return $response;
     }

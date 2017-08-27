@@ -10,16 +10,18 @@ if (isset( $marcaMotor )) {
 
    $consultaExistente = 'SELECT motId FROM motores WHERE motMarca = "'.$marcaMotor.'";';
                           //al validar cambia valor de atributo para toda la clase
-   $conexion = $ConsultasCliente -> establecerConexion();
+
+   $conexion = $Consultas -> establecerConexion();
 
      if ($conexion) {
        $nExistente = $Consultas -> contarExistentes($consultaExistente);                                     //si existe un RFC igual dentro del sistema
 
        if ($nExistente == 0) {
 
-             $sqlInsert = 'INSERT INTO motores (motMarca) values(';
-             $sqlValues = '"'.$marcaMotor.'"';
+             $sqlInsert = 'INSERT INTO motores (motMarca) values (';
+             $sqlValues = '"'.$marcaMotor.'");';
              $consulta = $sqlInsert.$sqlValues;
+          //   echo $consulta;
 
              $response = $Consultas -> consultaInsertEditEliminar($consulta);
 
