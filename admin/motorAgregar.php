@@ -45,7 +45,7 @@
                 <div role="form" name="signup_form2" novalidate >
                     <div class="form-group">
                         <label>Marca de motor</label>
-                        <input type="text" placeholder="Marca de motor" class="form-control" name="txtMarcaMotor" >
+                        <input type="text" placeholder="Marca de motor" class="form-control" name="txtMarcaMotor" id="txtMarcaMotor" >
                     </div>
 
                     <div class="form-group">

@@ -1,6 +1,7 @@
 <?php
 class ConsultasCliente {
   public  $ConexionBD;
+  private $database;
 
 
   public function establecerConexion(){
@@ -15,16 +16,16 @@ class ConsultasCliente {
 
                       /****************************Consulta despues de validar *************/
 
-            $database = $this-> ConexionBD->conectarBD();
+            $this -> database = $this-> ConexionBD->conectarBD();
 
-            if($database->connect_errno) {
+            if($this -> database->connect_errno) {
               $response = array(
                   'status' => 'ERROR',
                   'message' => 'No se puede conectar a la base de datos'
                 );
              }
              else{
-               if ( $result = $database->query($consulta) ) {
+               if ( $result = $this -> database->query($consulta) ) {
                  $response = array(
                          'status' => 'OK',
                          'message' => 'Consulta realizada con exito'
@@ -32,10 +33,10 @@ class ConsultasCliente {
               } else {
                 $response = array(
                     'status' => 'ERROR',
-                    'message' => $database->error
+                    'message' => $this -> database->error
                   );
               }
-              $this -> ConexionBD->desconectarDB($database);
+              $this -> ConexionBD->desconectarDB($this -> database);
             }
 
                             /**************************** /Consulta despues de validar *************/
@@ -61,12 +62,13 @@ class ConsultasCliente {
                }
                else{
                  if ( $result = $database->query($consulta) ) {
-                    if( $result->num_rows > 0 ) {
+                    /*if( $result->num_rows > 0 ) {
                         $response = 1;
                     }
                     else {
                       $response = 0;
-                    }
+                    }*/
+                    $response = $result->num_rows ;
 
                 } else {
                    $response =  $database->error;

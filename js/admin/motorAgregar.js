@@ -5,12 +5,45 @@ function agregarMotor(){
   if (!validar()) {
     return false;
   }
-  alert("as")
-}
+
+
+  var res = $.ajax({
+    url: '../php/admin/motorAgregar.php',
+    data:{
+      marcaMotor:     txtMarcaMotor.val(),
+    },
+    type: 'POST',
+    dataType: 'json',
+
+  });
+  res.done(function() {
+    if ( res.status == 'OK' ){
+       swal({
+         title: "Proveedor agregado.",
+         text: "Se agregó correctamente el proveedor.",
+         timer: 2000,
+         type: "success",
+         showConfirmButton: true
+       });
+    }
+    else{
+       mensaje = res.message;
+       swal({
+         title: "Error al agregar marca de motor.",
+         text: mensaje,
+         type: "error",
+         showConfirmButton: true
+       });
+     }
+  });
+
+  }
 
 function validar(){
-  if ((txtMarcaMotor.val() == '') || (txtMarcaMotor.val() == null)) {
+console.log(txtMarcaMotor.val());
+  if ((txtMarcaMotor.val() == '') || (txtMarcaMotor.val() === null)) {
     swal("Ingrese marca de motor", "", "warning");
+
     txtMarcaMotor.focus();
     return false;
   }
