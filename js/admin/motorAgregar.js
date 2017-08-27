@@ -1,5 +1,6 @@
 var btnGuardar=$('#btnGuardar'),
-    txtMarcaMotor=$('#txtMarcaMotor');
+    txtMarcaMotor=$('#txtMarcaMotor'),
+    bodyVer=$('$bodyVer');
 
     function agregarMotor(){
       if (!validar()) {
@@ -35,6 +36,7 @@ var btnGuardar=$('#btnGuardar'),
           type: "success",
           showConfirmButton: true
         });
+        txtMarcaMotor.val('');
       }
       else{
         mensaje = res.message;
@@ -60,5 +62,13 @@ function validar(){
   }
   return true;
 }
+
+function limiparCampos(){
+  txtMarcaMotor.val('');
+}
+
+$(document).on('ready', function(){
+  limiparCampos();
+});
 
 btnGuardar.on('click',agregarMotor);

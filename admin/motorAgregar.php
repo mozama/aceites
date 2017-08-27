@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Sistema de equivalencias de filtros para motor">
+    <meta name="author" content="Mozama">
     <title>SB Admin - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
@@ -23,6 +23,7 @@
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin.css" rel="stylesheet">
     <link href="../vendor/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="../css/estilo.css" rel="stylesheet">
 
   </head>
 
@@ -35,27 +36,74 @@
 
     <div class="content-wrapper py-3" style="height:100%">
       <div class="container-fluid">
+        <h3 class="text-center">
+          <i class="fa fa-truck text-primary" aria-hidden="true"></i>
+          Marca de motor
+        </h3>
+        <div class="elementos">
+          <div class="card">
+            <div class="card-header">
+              <h5>
+                <i class="fa fa-plus text-primary" aria-hidden="true"></i>
+                Agregar marca de motor
+              </h5>
+            </div>
+              <div class="card-body">
 
-        <div class="card">
-          <div class="card-header">
-            <h4>Agregar marca de motor</h4>
+                  <div role="form" name="signup_form2" novalidate >
+                      <div class="form-group">
+                          <label>Marca de motor</label>
+                          <input type="text" placeholder="Marca de motor" class="form-control" name="txtMarcaMotor" id="txtMarcaMotor" >
+                      </div>
+
+                      <div class="form-group">
+                          <button class="btn btn-sm btn-primary" type="submit" id="btnGuardar" style="cursor:pointer; cursor: hand"><strong>
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                            Guardar</strong></button>
+                      </div>
+                  </div>
+
+              </div>
           </div>
+        </div>
+
+        <div class="elementos">
+          <div class="card">
+            <div class="card-header">
+              <h5>
+                <i class="fa fa-pencil text-primary" aria-hidden="true"></i>
+                Ver / editar marca de motor
+              </h5>
+            </div>
             <div class="card-body">
 
-                <div role="form" name="signup_form2" novalidate >
-                    <div class="form-group">
-                        <label>Marca de motor</label>
-                        <input type="text" placeholder="Marca de motor" class="form-control" name="txtMarcaMotor" id="txtMarcaMotor" >
-                    </div>
+              <div class="table-responsive">
+                <table id="tblVer" class="table table-striped table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>
+                        Id
+                      </th>
+                      <th>
+                        Marca de motor
+                      </th>
+                      <th>
+                        Editar
+                      </th>
+                      <th>
+                        Eliminar
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="bodyVer">
 
-                    <div class="form-group">
-                        <button class="btn btn-sm btn-primary" type="submit" id="btnGuardar" style="cursor:pointer; cursor: hand"><strong>
-                          <i class="fa fa-floppy-o" aria-hidden="true"></i>
-                          Guardar</strong></button>
-                    </div>
-                </div>
+                  </tbody>
+
+                </table>
+              </div>
 
             </div>
+          </div>
         </div>
 
 
