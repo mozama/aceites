@@ -6,43 +6,47 @@ var btnGuardar=$('#btnGuardar'),
         return false;
       }
 
-      var res = $.ajax({
-       url: '../php/admin/motorAgregar.php',
-       data: {
+
+      var datos = $.ajax({
+      url: '../php/admin/motorAgregar.php',
+      data:{
          marcaMotor:     txtMarcaMotor.val(),
-       },
-       type: 'POST',
-       dataType:'json',
-       async:false
-       });
+      },
+      type: 'post',
+          dataType:'json',
+          async:false
+      }).error(function(e){
+          alert('Ocurrio un error, intente de nuevo');
+      }).responseText;
 
-      res.done(function() {
-      /*  var resultado;
-        try{
-          resultado = JSON.parse(res);
-        }catch (e){
+      var res;
+      try{
+          res = JSON.parse(datos);
+      }catch (e){
           alert('Error JSON ' + e);
-        }*/
+      }
 
-        if ( res.status == 'OK' ){
-           swal({
-             title: "Proveedor agregado.",
-             text: "Se agregó correctamente el proveedor.",
-             timer: 2000,
-             type: "success",
-             showConfirmButton: true
-           });
-        }
-        else {
-           mensaje = res.message;
-           swal({
-             title: "Error al agregar marca de motor.",
-             text: mensaje,
-             type: "error",
-             showConfirmButton: true
-           });
-         }
-      });
+
+      if ( res.status === 'OK' ){
+        swal({
+          title: "Proveedor agregado.",
+          text: "Se agregó correctamente la marca de motor.",
+          timer: 2000,
+          type: "success",
+          showConfirmButton: true
+        });
+      }
+      else{
+        mensaje = res.message;
+        swal({
+          title: "Error al agregar marca de motor.",
+          text: mensaje,
+          type: "error",
+          showConfirmButton: true
+        });
+      }
+
+
       }
 
 
