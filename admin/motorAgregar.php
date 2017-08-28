@@ -40,7 +40,8 @@
           <i class="fa fa-truck text-primary" aria-hidden="true"></i>
           Marca de motor
         </h3>
-        <div class="elementos">
+
+        <div class="elementos" id="dvAgregar">
           <div class="card">
             <div class="card-header">
               <h5>
@@ -67,7 +68,39 @@
           </div>
         </div>
 
-        <div class="elementos">
+        <div class="elementos hidden" id="dvEditar">
+          <div class="card">
+            <div class="card-header">
+              <h5>
+                <i class="fa fa-pencil text-primary" aria-hidden="true"></i>
+                Editar marca de motor
+              </h5>
+            </div>
+              <div class="card-body">
+
+                  <div role="form" name="signup_form2" novalidate >
+                      <div class="form-group">
+                          <label>Marca de motor</label>
+                          <input type="text" placeholder="Marca de motor" class="form-control" name="txtMarcaMotorE" id="txtMarcaMotorE" >
+                      </div>
+
+                      <div class="form-group">
+                          <button class="btn btn-sm btn-primary" type="submit" id="btnGuardarE" style="cursor:pointer; cursor: hand"><strong>
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                            Guardar</strong>
+                          </button>
+                          <button class="btn btn-sm btn-danger" type="submit" id="btnCancelarE" style="cursor:pointer; cursor: hand"><strong>
+                              <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                              Cancelar</strong>
+                          </button>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+        </div>
+
+        <div class="elementos" id="dvListado">
           <div class="card">
             <div class="card-header">
               <h5>

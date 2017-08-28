@@ -1,6 +1,12 @@
 var btnGuardar=$('#btnGuardar'),
     txtMarcaMotor=$('#txtMarcaMotor'),
     tbodyResult=$('#tbodyResult');
+var dvAgregar=$('#dvAgregar'),
+    dvEditar=$('#dvEditar'),
+    dvListado=$('#dvListado');
+var txtMarcaMotorE=$('#txtMarcaMotorE'),
+    btnGuardarE=$('#btnGuardarE'),
+    btnCancelarE=$('#btnCancelarE');
 
     function agregarMotor(){
       if (!validarIngreso()) {
@@ -145,7 +151,7 @@ function eliminarMotor(idMotor) {
       showConfirmButton: true
     });
     getMotores();
-    
+
   }
   else{
     mensaje = res.message;
@@ -162,6 +168,18 @@ function limiparCampos(){
   txtMarcaMotor.val('');
 }
 
+function visualizarEdicion(){
+  dvAgregar.addClass('hidden');
+  dvListado.addClass('hidden');
+  dvEditar.removeClass('hidden');
+}
+
+function cancelarEdicion(){
+  dvAgregar.removeClass('hidden');
+  dvListado.removeClass('hidden');
+  dvEditar.addClass('hidden');
+}
+
 $(document).on('ready', function(){
   $('#liMotores').addClass('active');
   limiparCampos();
@@ -170,3 +188,5 @@ $(document).on('ready', function(){
 
 btnGuardar.on('click',agregarMotor);
 tbodyResult.delegate('.fa-trash', 'click', confirmarEliminar);
+tbodyResult.delegate('.fa-pencil-square', 'click', visualizarEdicion);
+btnCancelarE.on('click',cancelarEdicion);
