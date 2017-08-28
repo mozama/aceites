@@ -4,7 +4,7 @@ class Conexion{
 
    $hostname = "localhost";
     $usuario = "root";
-    $password = "root";
+    $password = "";
     $basededatos = "aceites";
 
     $database = new mysqli($hostname, $usuario, $password, $basededatos);

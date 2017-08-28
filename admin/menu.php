@@ -58,7 +58,7 @@
 
 
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Marcas de filtro">
-        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseModelo">
+        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMarcaF">
         <i class="fa fa-sun-o" aria-hidden="true"></i>
           <span class="nav-link-text">
             Marcas de filtros</span>

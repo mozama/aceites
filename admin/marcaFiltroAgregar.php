@@ -54,7 +54,7 @@
                   <div role="form" name="signup_form2" novalidate >
                       <div class="form-group">
                           <label>Marca de filtro</label>
-                          <input type="text" placeholder="Marca de filtro" class="form-control" name="txtMarcaMotor" id="txtMarcaMotor" >
+                          <input type="text" placeholder="Marca de filtro" class="form-control" name="txtMarcaMotor" id="txtMarcaFiltro" >
                       </div>
 
                       <div class="form-group">
@@ -81,7 +81,7 @@
                   <div role="form" name="signup_form2" novalidate >
                       <div class="form-group">
                           <label>Marca de filtro</label>
-                          <input type="text" placeholder="Marca de filtro" class="form-control" name="txtMarcaMotorE" id="txtMarcaMotorE" >
+                          <input type="text" placeholder="Marca de filtro" class="form-control" name="txtMarcaMotorE" id="txtMarcaFiltroE" >
                           <input type="text" class="hidden" id="txtIdE">
                       </div>
 
@@ -160,7 +160,7 @@
     <!-- Custom scripts for this template
     <script src="../js/sb-admin.min.js"></script>
     -->
-    <script src="../js/admin/motorAgregar.js"></script>
+    <script src="../js/admin/marcaFiltroAgregar.js"></script>
 
   </body>
 
