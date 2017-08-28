@@ -58,14 +58,14 @@
 
 
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Marcas de filtro">
-        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMarcaF">
+        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseModelo">
         <i class="fa fa-sun-o" aria-hidden="true"></i>
           <span class="nav-link-text">
             Marcas de filtros</span>
         </a>
         <ul class="sidenav-second-level collapse" id="collapseMarcaF">
           <li>
-            <a href="">Agregar marca de filtro</a>
+            <a class="nav-link"  href="marcaFiltroAgregar.php">Agregar marca de filtro</a>
           </li>
           <li>
             <a href="#">Ver - Editar marca de filtro</a>
