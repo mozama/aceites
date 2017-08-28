@@ -17,22 +17,16 @@ if (isset( $marcaMotor )) {
        $nExistente = $Consultas -> contarExistentes($consultaExistente);                                     //si existe un RFC igual dentro del sistema
 
        if ($nExistente == 0) {
-
              $sqlInsert = 'INSERT INTO motores (motMarca) values (';
              $sqlValues = '"'.$marcaMotor.'");';
              $consulta = $sqlInsert.$sqlValues;
-          //   echo $consulta;
-
              $response = $Consultas -> consultaInsertEditEliminar($consulta);
-
-
            }
            else {
              $response =  array('status'   => 'ERROR',
                                 'message'  => "Ya existe una marca de motor con el mismo nombre verifique."
                                );
            }
-
 
      }
      else {

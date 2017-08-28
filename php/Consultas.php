@@ -50,38 +50,24 @@ class Consultas {
 
 /*  contar numero de registros
   @recibe consulta SQL
-  @return int con 1 si existen registros 0 si no existen registros
+  @return int con cantidad de registros encontrados
 */
 
     public function contarExistentes($consulta) {
 
-                        /****************************Consulta despues de validar *************/
-            //  $database = $this-> ConexionBD->conectarBD();
-
-              if($this -> database ->connect_errno) {
-                $response = -1;   //No se puede conectar a la base de datos
-               }
-               else{
-                 if ( $result = $this -> database ->query($consulta) ) {
-                    /*if( $result->num_rows > 0 ) {
-                        $response = 1;
-                    }
-                    else {
-                      $response = 0;
-                    }*/
-                    $response = $result->num_rows ;
-
-                } else {
-                   $response =  $this -> database ->error;
-                }
-              //  $this -> ConexionBD->desconectarDB($database);
-              }
-
-                              /**************************** /Consulta despues de validar *************/
-
-
+      if($this -> database ->connect_errno) {
+        $response = -1;   //No se puede conectar a la base de datos
+      }
+      else{
+         if ( $result = $this -> database ->query($consulta) ) {        //realiza consulta
+            $response = $result->num_rows ;                             //metodo num_rows regresa el numero de registros encontrados 
+        } else {
+           $response =  $this -> database ->error;
+        }
+      }
       return $response;
     }
+
 
     public function contarExistentesGeneral($consulta) {    //No solicita permiso administrados
 

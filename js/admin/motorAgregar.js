@@ -3,7 +3,7 @@ var btnGuardar=$('#btnGuardar'),
     tbodyResult=$('#tbodyResult');
 
     function agregarMotor(){
-      if (!validar()) {
+      if (!validarIngreso()) {
         return false;
       }
 
@@ -25,7 +25,6 @@ var btnGuardar=$('#btnGuardar'),
       }catch (e){
           alert('Error JSON ' + e);
       }
-
 
       if ( res.status === 'OK' ){
         swal({
@@ -90,8 +89,7 @@ var btnGuardar=$('#btnGuardar'),
   }
 
 
-function validar(){
-//console.log(txtMarcaMotor.val());
+function validarIngreso(){
   if ((txtMarcaMotor.val() == '') || (txtMarcaMotor.val() === null)) {
     swal("Ingrese marca de motor", "", "warning");
 
@@ -99,6 +97,65 @@ function validar(){
     return false;
   }
   return true;
+}
+
+function confirmarEliminar(){
+  var id = $(this).attr('id');
+  swal({
+    title: "Eliminar Marca de motor",
+    text: "¿Eliminar la marca de motor seleccionado?, esta acción no se podrá revertir.",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar",
+    closeOnConfirm: false
+  },
+  function(){
+    eliminarMotor(id);
+  });
+}
+
+function eliminarMotor(idMotor) {
+  var datos = $.ajax({
+  url: '../php/admin/motorEliminar.php',
+  data:{
+     idMotor:  idMotor
+  },
+  type: 'post',
+      dataType:'json',
+      async:false
+  }).error(function(e){
+      alert('Ocurrio un error, intente de nuevo');
+  }).responseText;
+
+  var res;
+  try{
+      res = JSON.parse(datos);
+  }catch (e){
+      alert('Error JSON ' + e);
+  }
+
+  if ( res.status === 'OK' ){
+    swal({
+      title: "Marca de motor eliminado correctamente.",
+      text: "",
+      timer: 2000,
+      type: "success",
+      showConfirmButton: true
+    });
+    getMotores();
+    
+  }
+  else{
+    mensaje = res.message;
+    swal({
+      title: "Error al eliminar marca de motor.",
+      text: mensaje,
+      type: "error",
+      showConfirmButton: true
+    });
+  }
 }
 
 function limiparCampos(){
@@ -112,3 +169,4 @@ $(document).on('ready', function(){
 });
 
 btnGuardar.on('click',agregarMotor);
+tbodyResult.delegate('.fa-trash', 'click', confirmarEliminar);
