@@ -6,7 +6,8 @@ var dvAgregar=$('#dvAgregar'),
     dvListado=$('#dvListado');
 var txtMarcaMotorE=$('#txtMarcaMotorE'),
     btnGuardarE=$('#btnGuardarE'),
-    btnCancelarE=$('#btnCancelarE');
+    btnCancelarE=$('#btnCancelarE'),
+    txtIdE=$('#txtIdE');
 
     function agregarMotor(){
       if (!validarIngreso()) {
@@ -172,6 +173,82 @@ function visualizarEdicion(){
   dvAgregar.addClass('hidden');
   dvListado.addClass('hidden');
   dvEditar.removeClass('hidden');
+
+  var id = $(this).attr('id');
+
+  var datos = $.ajax({
+  url: '../php/admin/motorGet.php',
+  data:{
+     idMotor:  id
+  },
+  type: 'post',
+      dataType:'json',
+      async:false
+  }).error(function(e){
+      alert('Ocurrio un error, intente de nuevo');
+  }).responseText;
+
+  var res;
+  try{
+      res = JSON.parse(datos);
+  }catch (e){
+      alert('Error JSON ' + e);
+  }
+
+  if ( res.status === 'OK' ){
+      $.each(res.data, function(k,o){
+        txtMarcaMotorE.val(o.motMarca);
+        txtIdE.val(o.motId);
+      });
+  }
+  else{
+    txtMarcaMotorE.val(res.message);
+  }
+}
+
+
+function editarMotor() {
+  var datos = $.ajax({
+  url: '../php/admin/motorEditar.php',
+  data:{
+     idMotor:     txtIdE.val(),
+     marcaMotor : txtMarcaMotorE.val()
+  },
+  type: 'post',
+      dataType:'json',
+      async:false
+  }).error(function(e){
+      alert('Ocurrio un error, intente de nuevo');
+  }).responseText;
+
+  var res;
+  try{
+      res = JSON.parse(datos);
+  }catch (e){
+      alert('Error JSON ' + e);
+  }
+
+  if ( res.status === 'OK' ){
+    swal({
+      title: "Marca de motor editado correctamente.",
+      text: "",
+      timer: 2000,
+      type: "success",
+      showConfirmButton: true
+    });
+    cancelarEdicion();
+    getMotores();
+
+  }
+  else{
+    mensaje = res.message;
+    swal({
+      title: "Error al editar marca de motor.",
+      text: mensaje,
+      type: "error",
+      showConfirmButton: true
+    });
+  }
 }
 
 function cancelarEdicion(){
@@ -190,3 +267,4 @@ btnGuardar.on('click',agregarMotor);
 tbodyResult.delegate('.fa-trash', 'click', confirmarEliminar);
 tbodyResult.delegate('.fa-pencil-square', 'click', visualizarEdicion);
 btnCancelarE.on('click',cancelarEdicion);
+btnGuardarE.on('click',editarMotor);

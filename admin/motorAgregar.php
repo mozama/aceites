@@ -82,6 +82,7 @@
                       <div class="form-group">
                           <label>Marca de motor</label>
                           <input type="text" placeholder="Marca de motor" class="form-control" name="txtMarcaMotorE" id="txtMarcaMotorE" >
+                          <input type="text" class="hidden" id="txtIdE">
                       </div>
 
                       <div class="form-group">
