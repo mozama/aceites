@@ -1,5 +1,5 @@
 var btnGuardar=$('#btnGuardar'),
-    txtMarcaMotor=$('#txtMarcaFiltro'),
+    txtMarcaFiltro=$('#txtMarcaFiltro'),
     tbodyResult=$('#tbodyResult');
 var dvAgregar=$('#dvAgregar'),
     dvEditar=$('#dvEditar'),
