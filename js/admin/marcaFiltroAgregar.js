@@ -9,13 +9,13 @@ var txtMarcaMotorE=$('#txtMarcaFiltroE'),
     btnCancelarE=$('#btnCancelarE'),
     txtIdE=$('#txtIdE');
 
-    function agregarMotor(){
+    function agregarFiltro(){
       if (!validarIngreso()) {
         return false;
       }
 
       var datos = $.ajax({
-      url: '../php/admin/marcaFiltroAgregar.php',
+      url: '../php/admin/filtro/marcaFiltroAgregar.php',
       data:{
          marcaMotor:     txtMarcaFiltro.val(),
       },
