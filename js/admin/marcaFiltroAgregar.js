@@ -4,20 +4,20 @@ var btnGuardar=$('#btnGuardar'),
 var dvAgregar=$('#dvAgregar'),
     dvEditar=$('#dvEditar'),
     dvListado=$('#dvListado');
-var txtMarcaMotorE=$('#txtMarcaFiltroE'),
+var txtMarcaFiltroE=$('#txtMarcaFiltroE'),
     btnGuardarE=$('#btnGuardarE'),
     btnCancelarE=$('#btnCancelarE'),
     txtIdE=$('#txtIdE');
 
-    function agregarFiltro(){
+    function agregarMarcaFiltro(){
       if (!validarIngreso()) {
         return false;
       }
 
       var datos = $.ajax({
-      url: '../php/admin/filtro/marcaFiltroAgregar.php',
+      url: '../php/admin/marcaFiltroAgregar.php',
       data:{
-         marcaMotor:     txtMarcaFiltro.val(),
+         marcaFiltro:     txtMarcaFiltro.val(),
       },
       type: 'post',
           dataType:'json',
@@ -35,7 +35,7 @@ var txtMarcaMotorE=$('#txtMarcaFiltroE'),
 
       if ( res.status === 'OK' ){
         swal({
-          title: "Proveedor agregado.",
+          title: "Marca de filtro agregado.",
           text: "Se agregó correctamente la marca de filtro.",
           timer: 2000,
           type: "success",
@@ -46,10 +46,27 @@ var txtMarcaMotorE=$('#txtMarcaFiltroE'),
       else{
         mensaje = res.message;
         swal({
-          title: "Error al agregar marca de motor.",
+          title: "Error al agregar marca de filtro.",
           text: mensaje,
           type: "error",
           showConfirmButton: true
         });
       }
   }
+
+  function validarIngreso(){
+    if ((txtMarcaFiltro.val() == '') || (txtMarcaFiltro.val() === null)) {
+      swal("Ingrese marca de filtro", "", "warning");
+
+      txtMarcaFiltro.focus();
+      return false;
+    }
+    return true;
+  }
+
+  $(document).on('ready', function(){
+    $('#liMarcaFiltro').addClass('active');
+
+  });
+
+  btnGuardar.on('click',agregarMarcaFiltro);
