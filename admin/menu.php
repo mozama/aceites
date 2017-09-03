@@ -39,22 +39,15 @@
         -->
       </li>
 
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Modelos de motor">
-        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseModelo">
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Modelos de motor" id="liModeloMotor">
+        <a class="nav-link "  href="modeloMotAgregar.php">
           <i class="fa fa-cogs" aria-hidden="true"></i>
           <span class="nav-link-text">
             Modelos de motor</span>
         </a>
-        <ul class="sidenav-second-level collapse" id="collapseModelo">
-          <li>
-            <a href="#">Agregar modelo</a>
-          </li>
-          <li>
-            <a href="#">Ver - Editar modelo</a>
-          </li>
 
-        </ul>
       </li>
+
 
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Marcas de filtro" id="liMarcaFiltro">
         <a class="nav-link "  href="marcaFiltroAgregar.php">
@@ -74,7 +67,7 @@
         -->
       </li>
 
-    
+
 
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Filtro">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseFiltro">
