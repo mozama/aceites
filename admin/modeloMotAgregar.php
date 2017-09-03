@@ -52,13 +52,17 @@
               <div class="card-body">
 
                   <div role="form" name="signup_form2" novalidate >
+
                     <div class="form-group">
-                        <label>Marca de motor</label>
-                        <input type="text" placeholder="Marca de motor" class="form-control" name="txtMarcaMotor" id="txtMarcaMotor" >
+                      <label for="slctNombreRev" class="control-label"> Marca de motor:</label>
+                      <div class="">
+                        <select name="" id="txtMarcaMotor" class="form-control input-sm">
+                        </select>
+                      </div>
                     </div>
                       <div class="form-group">
                           <label>Modelo de motor</label>
-                          <input type="text" placeholder="Marca de motor" class="form-control" name="txtMarcaMotor" id="txtMarcaMotor" >
+                          <input type="text" placeholder="Ingrese el modelo de motor" class="form-control" name="txtMarcaMotor" id="txtMarcaMotor" >
                       </div>
 
                       <div class="form-group">
@@ -150,7 +154,7 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/jquery/jquery.js"></script>
     <script src="../vendor/popper/popper.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="../vendor/sweetalert/sweetalert.min.js"></script>

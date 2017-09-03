@@ -72,7 +72,10 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
           alert('Error JSON ' + e);
       }
 
-      tbodyResult.html('');
+      txtMarcaMotor.html('');
+      txtMarcaMotor.append(
+        '<option value=0> Seleccione una marca de motor </option>'
+      );
 
       if ( res.status === 'OK' ){
         $.each(res.data, function(k,o){
@@ -87,6 +90,9 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
                   '<i class="fa fa-pencil-square text-primary" aria-hidden="true" id="'+o.motId+'" style="cursor:pointer"  ></i>'+
                 '</td>'+
               '</tr>'
+          );
+          txtMarcaMotor.append(
+            '<option value='+o.motId+'>'+o.motMarca+'</option>'
           );
         });
       }else{
@@ -266,7 +272,7 @@ $(document).on('ready', function(){
   getMotores();
 });
 
-btnGuardar.on('click',agregarMotor);
+//btnGuardar.on('click',agregarMotor);
 //tbodyResult.delegate('.fa-trash', 'click', confirmarEliminar);
 //tbodyResult.delegate('.fa-pencil-square', 'click', visualizarEdicion);
 //btnCancelarE.on('click',cancelarEdicion);

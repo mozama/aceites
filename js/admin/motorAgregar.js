@@ -35,7 +35,7 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
 
       if ( res.status === 'OK' ){
         swal({
-          title: "Proveedor agregado.",
+          title: "MArca de motor agregado.",
           text: "Se agregó correctamente la marca de motor.",
           timer: 2000,
           type: "success",
