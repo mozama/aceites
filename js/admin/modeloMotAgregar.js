@@ -56,48 +56,34 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
 
 
   function getMotores(){
+
     var datos = $.ajax({
       url: '../php/admin/motorGetTodos.php',
       type: 'post',
       dataType:'json',
       async:false
-      }).error(function(e){
-          alert('Ocurrio un error, intente de nuevo');
-      }).responseText;
+      })
 
-      var res;
-      try{
-          res = JSON.parse(datos);
-      }catch (e){
-          alert('Error JSON ' + e);
-      }
+      .done(function( response ) {
+        txtMarcaMotor.html('');
+        txtMarcaMotor.append(
+          '<option value=0> Seleccione una marca de motor </option>'
+        );
+        if ( response.status === 'OK' ){
+          $.each(response.data, function(k,o){
+            txtMarcaMotor.append(
+              '<option value='+o.motId+'>'+o.motMarca+'</option>'
+            );
+          });
+        }else{
+          txtMarcaMotor.html('');
+          txtMarcaMotor.html('<option value=0>'+ response.message +'</option>');
+        }
+      })
 
-      txtMarcaMotor.html('');
-      txtMarcaMotor.append(
-        '<option value=0> Seleccione una marca de motor </option>'
-      );
-
-      if ( res.status === 'OK' ){
-        $.each(res.data, function(k,o){
-            tbodyResult.append(
-              '<tr>'+
-                '<td class="text-center" >'+o.motId+'</td>'+
-                '<td class="text-center">'+o.motMarca+'</td>'+
-                '<td class="text-center">'+
-                  '<i class="fa fa-trash text-danger" aria-hidden="true" id="'+o.motId+'" style="cursor:pointer"  ></i>'+
-                '</td>'+
-                '<td class="text-center">'+
-                  '<i class="fa fa-pencil-square text-primary" aria-hidden="true" id="'+o.motId+'" style="cursor:pointer"  ></i>'+
-                '</td>'+
-              '</tr>'
-          );
-          txtMarcaMotor.append(
-            '<option value='+o.motId+'>'+o.motMarca+'</option>'
-          );
-        });
-      }else{
-        tbodyResult.html('<tr><td colspan="8" class="center"><h3>'+ res.message +'</h3></td></tr>');
-      }
+      .fail(function( jqXHR, textStatus, errorThrown ){
+          alert('Ocurrio un error, intente de nuevo '+textStatus);
+      });
 
   }
 
