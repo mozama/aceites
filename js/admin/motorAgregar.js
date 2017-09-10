@@ -55,25 +55,16 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
   }
 
 
-  function getMotores(){
-    var datos = $.ajax({
-      url: '../php/admin/motorGetTodos.php',
-      type: 'post',
-      dataType:'json',
-      async:false
-      }).error(function(e){
-          alert('Ocurrio un error, intente de nuevo');
-      }).responseText;
+function getMotores(){
+  var datos = $.ajax({
+    url: '../php/admin/motorGetTodos.php',
+    type: 'post',
+    dataType:'json',
+    async:false
+    })
 
-      var res;
-      try{
-          res = JSON.parse(datos);
-      }catch (e){
-          alert('Error JSON ' + e);
-      }
-
+    .done( function( res ){
       tbodyResult.html('');
-
       if ( res.status === 'OK' ){
         $.each(res.data, function(k,o){
             tbodyResult.append(
@@ -92,9 +83,13 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
       }else{
         tbodyResult.html('<tr><td colspan="8" class="center"><h3>'+ res.message +'</h3></td></tr>');
       }
+    })
 
-  }
+    .fail(function( jqXHR, textStatus, errorThrown ){
+        alert('Ocurrio un error, intente de nuevo '+textStatus);
+    });
 
+}
 
 function validarIngreso(){
   if ((txtMarcaMotor.val() == '') || (txtMarcaMotor.val() === null)) {
@@ -106,6 +101,7 @@ function validarIngreso(){
   return true;
 }
 
+/*
 function confirmarEliminar(){
   var id = $(this).attr('id');
   swal({
@@ -121,8 +117,8 @@ function confirmarEliminar(){
   function(){
     eliminarMotor(id);
   });
-}
-
+}*/
+/*
 function eliminarMotor(idMotor) {
   var datos = $.ajax({
   url: '../php/admin/motorEliminar.php',
@@ -163,12 +159,12 @@ function eliminarMotor(idMotor) {
       showConfirmButton: true
     });
   }
-}
+}*/
 
-function limiparCampos(){
+/*function limiparCampos(){
   txtMarcaMotor.val('');
-}
-
+}*/
+/*
 function visualizarEdicion(){
   dvAgregar.addClass('hidden');
   dvListado.addClass('hidden');
@@ -205,7 +201,8 @@ function visualizarEdicion(){
     txtMarcaMotorE.val(res.message);
   }
 }
-
+*/
+/*
 
 function editarMotor() {
   var datos = $.ajax({
@@ -250,21 +247,23 @@ function editarMotor() {
     });
   }
 }
-
-function cancelarEdicion(){
+*/
+/*function cancelarEdicion(){
   dvAgregar.removeClass('hidden');
   dvListado.removeClass('hidden');
   dvEditar.addClass('hidden');
-}
+}*/
 
-$(document).on('ready', function(){
+$(function() {
   $('#liMotores').addClass('active');
-  limiparCampos();
+  //limiparCampos();
   getMotores();
-});
+  }
+);
+
 
 btnGuardar.on('click',agregarMotor);
-tbodyResult.delegate('.fa-trash', 'click', confirmarEliminar);
-tbodyResult.delegate('.fa-pencil-square', 'click', visualizarEdicion);
-btnCancelarE.on('click',cancelarEdicion);
-btnGuardarE.on('click',editarMotor);
+//tbodyResult.delegate('.fa-trash', 'click', confirmarEliminar);
+//tbodyResult.delegate('.fa-pencil-square', 'click', visualizarEdicion);
+//btnCancelarE.on('click',cancelarEdicion);
+//btnGuardarE.on('click',editarMotor);
