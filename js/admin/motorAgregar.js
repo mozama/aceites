@@ -20,38 +20,37 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
          marcaMotor:     txtMarcaMotor.val(),
       },
       type: 'post',
-          dataType:'json',
-          async:false
-      }).error(function(e){
-          alert('Ocurrio un error, intente de nuevo');
-      }).responseText;
+      dataType:'json',
+      async:false
+      })
 
-      var res;
-      try{
-          res = JSON.parse(datos);
-      }catch (e){
-          alert('Error JSON ' + e);
-      }
+      .done(function ( res ){
+        if ( res.status === 'OK' ){
+          swal({
+            title: "Marca de motor agregado.",
+            text: "Se agregó correctamente la marca de motor.",
+            timer: 2000,
+            type: "success",
+            showConfirmButton: true
+          });
+          txtMarcaMotor.val('');
+          getMotores();
+        }
+        else{
+          mensaje = res.message;
+          swal({
+            title: "Error al agregar marca de motor.",
+            text: mensaje,
+            type: "error",
+            showConfirmButton: true
+          });
+        }
+      })
+      .fail(function( jqXHR, textStatus, errorThrown ){
+          alert('Ocurrio un error, intente de nuevo '+textStatus);
+      });
 
-      if ( res.status === 'OK' ){
-        swal({
-          title: "MArca de motor agregado.",
-          text: "Se agregó correctamente la marca de motor.",
-          timer: 2000,
-          type: "success",
-          showConfirmButton: true
-        });
-        txtMarcaMotor.val('');
-      }
-      else{
-        mensaje = res.message;
-        swal({
-          title: "Error al agregar marca de motor.",
-          text: mensaje,
-          type: "error",
-          showConfirmButton: true
-        });
-      }
+
   }
 
 
