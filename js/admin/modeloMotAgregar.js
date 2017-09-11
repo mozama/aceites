@@ -260,7 +260,7 @@ function cancelarEdicion(){
 $(document).on('ready', function(){
   $('#liModeloMotor').addClass('active');
   //limiparCampos();
-  getMotores();
+  getMotores(); //para lista desplegable
 });
 
 btnGuardar.on('click',modeloMotAgregar);

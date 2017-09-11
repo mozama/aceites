@@ -13,13 +13,14 @@
         </a>
       </li>
 
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+  <!--      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
         <a class="nav-link" href="#">
           <i class="fa fa-fw fa-table"></i>
           <span class="nav-link-text">
             Sesiones</span>
         </a>
       </li>
+      -->
 
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Motores" id="liMotores">
         <a class="nav-link "  href="motorAgregar.php">
