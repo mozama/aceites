@@ -5,54 +5,52 @@ var dvAgregar=$('#dvAgregar'),
     dvEditar=$('#dvEditar'),
     dvListado=$('#dvListado');
 var txtMarcaMotorE=$('#txtMarcaMotorE'),
+    txtModMotor=$('#txtModMotor'),
     btnGuardarE=$('#btnGuardarE'),
     btnCancelarE=$('#btnCancelarE'),
     txtIdE=$('#txtIdE');
 
-  /*  function agregarMotor(){
+    function modeloMotAgregar(){
       if (!validarIngreso()) {
         return false;
       }
 
       var datos = $.ajax({
-      url: '../php/admin/motorAgregar.php',
-      data:{
-         marcaMotor:     txtMarcaMotor.val(),
-      },
-      type: 'post',
-          dataType:'json',
-          async:false
-      }).error(function(e){
-          alert('Ocurrio un error, intente de nuevo');
-      }).responseText;
+        url: '../php/admin/modeloMotAgregar.php',
+        data:{
+           idMotor:     txtMarcaMotor.val(),
+           modeloMotor: txtModMotor.val(),
+        },
+        type: 'post',
+        dataType:'json',
+        async:false
+      })
+      .done(function(res){
+        if ( res.status === 'OK' ){
+          swal({
+            title: "Modelo de motor agregado.",
+            text: "Se agregó correctamente el modelo de motor.",
+            timer: 2000,
+            type: "success",
+            showConfirmButton: true
+          });
+          txtMarcaMotor.val('');
+        }
+        else{
+          mensaje = res.message;
+          swal({
+            title: "Error al agregar marca de motor.",
+            text: mensaje,
+            type: "error",
+            showConfirmButton: true
+          });
+        }
+      })
+      .fail(function( jqXHR, textStatus, errorThrown ){
+          alert('Ocurrio un error, intente de nuevo '+textStatus);
+      });
 
-      var res;
-      try{
-          res = JSON.parse(datos);
-      }catch (e){
-          alert('Error JSON ' + e);
-      }
-
-      if ( res.status === 'OK' ){
-        swal({
-          title: "Proveedor agregado.",
-          text: "Se agregó correctamente la marca de motor.",
-          timer: 2000,
-          type: "success",
-          showConfirmButton: true
-        });
-        txtMarcaMotor.val('');
-      }
-      else{
-        mensaje = res.message;
-        swal({
-          title: "Error al agregar marca de motor.",
-          text: mensaje,
-          type: "error",
-          showConfirmButton: true
-        });
-      }
-  }*/
+  }
 
 
   function getMotores(){
@@ -87,17 +85,24 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
 
   }
 
-/*
+
 function validarIngreso(){
   if ((txtMarcaMotor.val() == '') || (txtMarcaMotor.val() === null)) {
-    swal("Ingrese marca de motor", "", "warning");
+    swal("Seleccione marca de motor", "", "warning");
+
+    txtMarcaMotor.focus();
+    return false;
+  }
+
+  if ((txtModMotor.val() == '') || (txtModMotor.val() === null)) {
+    swal("Ingrese modelo de motor", "", "warning");
 
     txtMarcaMotor.focus();
     return false;
   }
   return true;
 }
-*/
+
 /*
 function confirmarEliminar(){
   var id = $(this).attr('id');
@@ -258,7 +263,7 @@ $(document).on('ready', function(){
   getMotores();
 });
 
-//btnGuardar.on('click',agregarMotor);
+btnGuardar.on('click',modeloMotAgregar);
 //tbodyResult.delegate('.fa-trash', 'click', confirmarEliminar);
 //tbodyResult.delegate('.fa-pencil-square', 'click', visualizarEdicion);
 //btnCancelarE.on('click',cancelarEdicion);

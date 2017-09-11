@@ -62,7 +62,7 @@
                     </div>
                       <div class="form-group">
                           <label>Modelo de motor</label>
-                          <input type="text" placeholder="Ingrese el modelo de motor" class="form-control" name="txtMarcaMotor" id="txtMarcaMotor" >
+                          <input type="text" placeholder="Ingrese el modelo de motor" class="form-control" name="txtModMotor" id="txtModMotor" >
                       </div>
 
                       <div class="form-group">
