@@ -57,7 +57,7 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
 
   function getMotores(){
 
-    var datos = $.ajax({
+    $.ajax({
       url: '../php/admin/motorGetTodos.php',
       type: 'post',
       dataType:'json',
