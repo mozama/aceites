@@ -15,43 +15,40 @@ var txtMarcaFiltroE=$('#txtMarcaFiltroE'),
       }
 
       var datos = $.ajax({
-      url: '../php/admin/marcaFiltroAgregar.php',
-      data:{
-         marcaFiltro:     txtMarcaFiltro.val(),
-      },
-      type: 'post',
-          dataType:'json',
-          async:false
-      }).error(function(e){
-          alert('Ocurrio un error, intente de nuevo');
-      }).responseText;
+        url: '../php/admin/marcaFiltroAgregar.php',
+        data:{
+           marcaFiltro:     txtMarcaFiltro.val(),
+        },
+        type: 'post',
+        dataType:'json',
+        async:false
+      })
+      .done(function(res){
+        if ( res.status === 'OK' ){
+          swal({
+            title: "Marca de filtro agregado.",
+            text: "Se agregó correctamente la marca de filtro.",
+            timer: 2000,
+            type: "success",
+            showConfirmButton: true
+          });
+          txtMarcaFiltro.val('');
+        }
+        else{
+          mensaje = res.message;
+          swal({
+            title: "Error al agregar marca de filtro.",
+            text: mensaje,
+            type: "error",
+            showConfirmButton: true
+          });
+        }
+      })
+      .fail(function( jqXHR, textStatus, errorThrown ){
+          alert('Ocurrio un error, intente de nuevo '+textStatus);
+      });
 
-      var res;
-      try{
-          res = JSON.parse(datos);
-      }catch (e){
-          alert('Error JSON ' + e);
-      }
 
-      if ( res.status === 'OK' ){
-        swal({
-          title: "Marca de filtro agregado.",
-          text: "Se agregó correctamente la marca de filtro.",
-          timer: 2000,
-          type: "success",
-          showConfirmButton: true
-        });
-        txtMarcaFiltro.val('');
-      }
-      else{
-        mensaje = res.message;
-        swal({
-          title: "Error al agregar marca de filtro.",
-          text: mensaje,
-          type: "error",
-          showConfirmButton: true
-        });
-      }
   }
 
   function validarIngreso(){
@@ -64,9 +61,8 @@ var txtMarcaFiltroE=$('#txtMarcaFiltroE'),
     return true;
   }
 
-  $(document).on('ready', function(){
+  $(function(){
     $('#liMarcaFiltro').addClass('active');
-
   });
 
   btnGuardar.on('click',agregarMarcaFiltro);
