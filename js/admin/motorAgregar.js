@@ -160,7 +160,7 @@ function eliminarMotor(idMotor) {
 function limiparCampos(){
   txtMarcaMotor.val('');
 }
-/*
+
 function visualizarEdicion(){
   dvAgregar.addClass('hidden');
   dvListado.addClass('hidden');
@@ -176,29 +176,24 @@ function visualizarEdicion(){
   type: 'post',
       dataType:'json',
       async:false
-  }).error(function(e){
-      alert('Ocurrio un error, intente de nuevo');
-  }).responseText;
+  })
 
-  var res;
-  try{
-      res = JSON.parse(datos);
-  }catch (e){
-      alert('Error JSON ' + e);
-  }
+  .done(function(res){
+    if ( res.status === 'OK' ){
+        $.each(res.data, function(k,o){
+          txtMarcaMotorE.val(o.motMarca);
+          txtIdE.val(o.motId);
+        });
+    }
+    else{
+      txtMarcaMotorE.val(res.message);
+    }
+  });
 
-  if ( res.status === 'OK' ){
-      $.each(res.data, function(k,o){
-        txtMarcaMotorE.val(o.motMarca);
-        txtIdE.val(o.motId);
-      });
-  }
-  else{
-    txtMarcaMotorE.val(res.message);
-  }
+
 }
-*/
-/*
+
+
 
 function editarMotor() {
   var datos = $.ajax({
@@ -210,49 +205,48 @@ function editarMotor() {
   type: 'post',
       dataType:'json',
       async:false
-  }).error(function(e){
-      alert('Ocurrio un error, intente de nuevo');
-  }).responseText;
+  })
 
-  var res;
-  try{
-      res = JSON.parse(datos);
-  }catch (e){
-      alert('Error JSON ' + e);
-  }
+  .done(function(res){
+    if ( res.status === 'OK' ){
+      swal({
+        title: "Marca de motor editado correctamente.",
+        text: "",
+        timer: 2000,
+        type: "success",
+        showConfirmButton: true
+      });
+      cancelarEdicion();
+      getMotores();
 
-  if ( res.status === 'OK' ){
-    swal({
-      title: "Marca de motor editado correctamente.",
-      text: "",
-      timer: 2000,
-      type: "success",
-      showConfirmButton: true
+      }
+      else{
+        mensaje = res.message;
+        swal({
+          title: "Error al editar marca de motor.",
+          text: mensaje,
+          type: "error",
+          showConfirmButton: true
+        });
+      }
+
+    })
+
+    .fail(function( jqXHR, textStatus, errorThrown ){
+        alert('Ocurrio un error, intente de nuevo '+textStatus);
     });
-    cancelarEdicion();
-    getMotores();
 
-  }
-  else{
-    mensaje = res.message;
-    swal({
-      title: "Error al editar marca de motor.",
-      text: mensaje,
-      type: "error",
-      showConfirmButton: true
-    });
-  }
 }
-*/
-/*function cancelarEdicion(){
+
+function cancelarEdicion(){
   dvAgregar.removeClass('hidden');
   dvListado.removeClass('hidden');
   dvEditar.addClass('hidden');
-}*/
+}
 
 $(function() {
   $('#liMotores').addClass('active');
-  //limiparCampos();
+  limiparCampos();
   getMotores();
   }
 );
@@ -260,6 +254,6 @@ $(function() {
 
 btnGuardar.on('click',agregarMotor);
 tbodyResult.delegate('.fa-trash', 'click', confirmarEliminar);
-//tbodyResult.delegate('.fa-pencil-square', 'click', visualizarEdicion);
-//btnCancelarE.on('click',cancelarEdicion);
-//btnGuardarE.on('click',editarMotor);
+tbodyResult.delegate('.fa-pencil-square', 'click', visualizarEdicion);
+btnCancelarE.on('click',cancelarEdicion);
+btnGuardarE.on('click',editarMotor);
