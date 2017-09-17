@@ -114,7 +114,7 @@
             <div class="card-header">
               <h5>
                 <i class="fa fa-pencil text-primary" aria-hidden="true"></i>
-                Ver / editar marca de motor
+                Ver / editar modelo de motor
               </h5>
             </div>
             <div class="card-body">
@@ -125,6 +125,9 @@
                     <tr>
                       <th class="text-center">
                         Id
+                      </th>
+                      <th class="text-center">
+                        Modelo de motor
                       </th>
                       <th class="text-center">
                         Marca de motor

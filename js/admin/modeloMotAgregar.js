@@ -85,6 +85,45 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
 
   }
 
+  function getModelosMotor(){
+
+    $.ajax({
+      url: '../php/admin/modeloMotorGet.php',
+      type: 'post',
+      dataType:'json',
+      async:false
+      })
+
+      .done(function( response ) {
+        tbodyResult.html('');
+
+        if ( response.status === 'OK' ){
+          $.each(response.data, function(k,o){
+              tbodyResult.append(
+                '<tr>'+
+                  '<td class="text-center" >'+o.modId+'</td>'+
+                  '<td class="text-center">'+o.modNombre+'</td>'+
+                  '<td class="text-center">'+o.motMarca+'</td>'+
+                  '<td class="text-center">'+
+                    '<i class="fa fa-trash text-danger" aria-hidden="true" id="'+o.modId+'" style="cursor:pointer"  ></i>'+
+                  '</td>'+
+                  '<td class="text-center">'+
+                    '<i class="fa fa-pencil-square text-primary" aria-hidden="true" id="'+o.modId+'" style="cursor:pointer"  ></i>'+
+                  '</td>'+
+                '</tr>'
+            );
+          });
+        }else{
+          tbodyResult.html('');
+          tbodyResult.html('<tr><td> '+ response.message +'</td></tr>');
+        }
+      })
+
+      .fail(function( jqXHR, textStatus, errorThrown ){
+          alert('Ocurrio un error, intente de nuevo '+textStatus);
+      });
+
+  }
 
 function validarIngreso(){
   if ((txtMarcaMotor.val() == '') || (txtMarcaMotor.val() === null)) {
@@ -261,6 +300,7 @@ $(document).on('ready', function(){
   $('#liModeloMotor').addClass('active');
   //limiparCampos();
   getMotores(); //para lista desplegable
+  getModelosMotor();
 });
 
 btnGuardar.on('click',modeloMotAgregar);
