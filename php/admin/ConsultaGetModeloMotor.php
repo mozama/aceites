@@ -45,7 +45,7 @@
                  } else {
                    $response = array(
                      'status' => 'ERROR',
-                     'message' => 'No se encontraron marcas de motor en el sistema.'
+                     'message' => 'No se encontraron modelos de motor en el sistema.'
                    );
                  }
 

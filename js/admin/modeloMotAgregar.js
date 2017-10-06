@@ -88,7 +88,10 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
   function getModelosMotor(){
 
     $.ajax({
-      url: '../php/admin/modeloMotorGet.php',
+      url: '../php/admin/modeloMotorGetMotor.php',
+      data:{
+        idMotor:     txtMarcaMotor.val(),
+      },
       type: 'post',
       dataType:'json',
       async:false
@@ -300,10 +303,10 @@ $(document).on('ready', function(){
   $('#liModeloMotor').addClass('active');
   //limiparCampos();
   getMotores(); //para lista desplegable
-  getModelosMotor();
 });
 
 btnGuardar.on('click',modeloMotAgregar);
+txtMarcaMotor.change(getModelosMotor);
 //tbodyResult.delegate('.fa-trash', 'click', confirmarEliminar);
 //tbodyResult.delegate('.fa-pencil-square', 'click', visualizarEdicion);
 //btnCancelarE.on('click',cancelarEdicion);
