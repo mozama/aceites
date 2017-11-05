@@ -1,11 +1,11 @@
 <?php
   /**
-   * Clase para regresar elementos de consulta para traer informacion de la tabla marcas_filtros
+   * Clase para regresar elementos de consulta para traer informacion de la tabla motores
    */
-  class ConsultaGetMarcaFiltro{
+  class ConsultaGetMotor{
 
-    function getConsultaMarcasFiltro($consultaSql){
-      include('../Consultas.php');
+    function getConsultaMotores($consultaSql){
+      include('../../Consultas.php');
           $Consultas = new Consultas;
 
             $Consultas -> establecerConexion();
@@ -25,12 +25,12 @@
                  if( $result->num_rows > 0 ) {
 
                    while($row = mysqli_fetch_array($result, MYSQL_BOTH)) {
-                     $marId     = $row['marId'];
-                     $marNombre = $row['marNombre'];
+                     $motId    = $row['motId'];
+                     $motMarca = $row['motMarca'];
 
                      $data[]= array(
-                                    'marId'    => $marId,
-                                    'marNombre' => $marNombre,
+                                    'motId'    => $motId,
+                                    'motMarca' => $motMarca,
                                   );
                    }
                    mysqli_free_result($result);

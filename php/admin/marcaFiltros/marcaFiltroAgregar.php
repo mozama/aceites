@@ -4,7 +4,7 @@ $marcaFiltro   =($_POST['marcaFiltro']);
 
 if (isset( $marcaFiltro )) {
 
-   include('../Consultas.php');
+   include('../../Consultas.php');
 
    $Consultas = new Consultas;
 

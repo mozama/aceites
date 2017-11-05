@@ -4,7 +4,7 @@ $idMotor   =($_POST['idMotor']);
 
 if (isset( $idMotor )) {
 
-   include('../Consultas.php');
+   include('../../Consultas.php');
 
    $Consultas = new Consultas;
             //verificar antes de eliminar que no existan modelos de motor con la marca a eliminar

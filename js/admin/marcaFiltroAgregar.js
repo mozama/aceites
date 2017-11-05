@@ -15,7 +15,7 @@ var txtMarcaFiltroE=$('#txtMarcaFiltroE'),
       }
 
       var datos = $.ajax({
-        url: '../php/admin/marcaFiltroAgregar.php',
+        url: '../php/admin/marcaFiltros/marcaFiltroAgregar.php',
         data:{
            marcaFiltro:     txtMarcaFiltro.val(),
         },
@@ -53,7 +53,7 @@ var txtMarcaFiltroE=$('#txtMarcaFiltroE'),
 
   function marcaFiltroTodos(){
     $.ajax({
-      url: '../php/admin/marcaFiltroTodos.php',
+      url: '../php/admin/marcaFiltros/marcaFiltroTodos.php',
       type: 'post',
       dataType:'json',
       async:false

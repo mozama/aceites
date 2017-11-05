@@ -16,7 +16,7 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
       }
 
       var datos = $.ajax({
-        url: '../php/admin/modeloMotAgregar.php',
+        url: '../php/admin/modeloMotor/modeloMotAgregar.php',
         data:{
            idMotor:     txtMarcaMotor.val(),
            modeloMotor: txtModMotor.val(),
@@ -57,7 +57,7 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
   function getMotores(){
 
     $.ajax({
-      url: '../php/admin/motorGetTodos.php',
+      url: '../php/admin/motor/motorGetTodos.php',
       type: 'post',
       dataType:'json',
       async:false
@@ -89,7 +89,7 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
   function getModelosMotor(){
 
     $.ajax({
-      url: '../php/admin/modeloMotorGetMotor.php',
+      url: '../php/admin/modeloMotor/modeloMotorGetMotor.php',
       data:{
         idMotor:     txtMarcaMotor.val(),
       },

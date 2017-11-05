@@ -5,7 +5,7 @@ $marcaMotor =($_POST['marcaMotor']);
 
 if ((isset( $idMotor )) || (isset($marcaMotor))) {
 
-   include('../Consultas.php');
+   include('../../Consultas.php');
 
    $Consultas = new Consultas;
 

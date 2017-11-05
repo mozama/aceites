@@ -1,11 +1,11 @@
 <?php
   /**
-   * Clase para obtener los elementos de la tabla modelos_motor
+   * Clase para regresar elementos de consulta para traer informacion de la tabla marcas_filtros
    */
-  class ConsultaGetModeloMotor{
+  class ConsultaGetMarcaFiltro{
 
-    function getConsultaModelosMotor($consultaSql){
-      include('../Consultas.php');
+    function getConsultaMarcasFiltro($consultaSql){
+      include('../../Consultas.php');
           $Consultas = new Consultas;
 
             $Consultas -> establecerConexion();
@@ -25,14 +25,12 @@
                  if( $result->num_rows > 0 ) {
 
                    while($row = mysqli_fetch_array($result, MYSQL_BOTH)) {
-                     $modId     = $row['modId'];
-                     $modNombre = $row['modNombre'];
-                     $motMarca  = $row['motMarca'];
+                     $marId     = $row['marId'];
+                     $marNombre = $row['marNombre'];
 
                      $data[]= array(
-                                    'modId'     => $modId,
-                                    'modNombre' => $modNombre,
-                                    'motMarca'  => $motMarca,
+                                    'marId'    => $marId,
+                                    'marNombre' => $marNombre,
                                   );
                    }
                    mysqli_free_result($result);
@@ -45,7 +43,7 @@
                  } else {
                    $response = array(
                      'status' => 'ERROR',
-                     'message' => 'No se encontraron modelos de motor en el sistema.'
+                     'message' => 'No se encontraron marcas de motor en el sistema.'
                    );
                  }
 
