@@ -9,7 +9,7 @@ if (isset( $idMotor ) || isset($modeloMotor)) {
 
    $Consultas = new Consultas;
 
-   $consultaExistente = 'SELECT modId FROM modelos_motor WHERE modMotor = '.$idMotor.';';
+   $consultaExistente = 'SELECT modId FROM modelos_motor WHERE modMotor = '.$idMotor.' AND modNombre = '.$modeloMotor.';';
                           //al validar cambia valor de atributo para toda la clase
 
    $conexion = $Consultas -> establecerConexion();

@@ -34,7 +34,8 @@ var txtMarcaMotorE=$('#txtMarcaMotorE'),
             type: "success",
             showConfirmButton: true
           });
-          txtMarcaMotor.val('');
+          limiparCampos();
+          getModelosMotor();
         }
         else{
           mensaje = res.message;
@@ -206,7 +207,7 @@ function eliminarMotor(idMotor) {
 }
 */
 function limiparCampos(){
-  txtMarcaMotor.val('');
+  txtModMotor.val('');
 }
 
 /*
@@ -299,9 +300,9 @@ function cancelarEdicion(){
   dvEditar.addClass('hidden');
 }*/
 
-$(document).on('ready', function(){
+$(function(){
   $('#liModeloMotor').addClass('active');
-  //limiparCampos();
+  limiparCampos();
   getMotores(); //para lista desplegable
 });
 

@@ -160,6 +160,7 @@
     <!-- Custom scripts for this template
     <script src="../js/sb-admin.min.js"></script>
     -->
+    <script src="../js/sb-admin.js"></script>
     <script src="../js/admin/marcaFiltroAgregar.js"></script>
 
   </body>
